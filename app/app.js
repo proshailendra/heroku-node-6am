@@ -6,6 +6,6 @@
             "ngStorage"
         ])
         .constant("globalConfig", {
-            apiAddress: "http://localhost:3000/api"
+            apiAddress: "https://heroku-node-6am.herokuapp.com/api"
         });
 })();
