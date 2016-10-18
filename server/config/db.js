@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
-var connection = mongoose.connect('mongodb://localhost/shoopingsite_6am');
+var strCon=process.env.MONGODB_URI;
+var connection = mongoose.connect(strCon);
 
 module.exports = connection;
