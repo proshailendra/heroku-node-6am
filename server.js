@@ -32,7 +32,7 @@ app.use("*", function(req, res) {
     res.sendFile(path.join(__dirname, "./app/index.html"));
 });
 
-var port = process.env.port;
+var port = process.env.port || 3000;
 app.listen(port, function() {
     console.log("Server is running at http://localhost:" + port);
 });
