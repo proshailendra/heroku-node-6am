@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h2 ng-show="product._id>0">Edit</h2>
+        <h2 ng-hide="product._id>0">Create</h2>
+        <hr />
+        <form class="form-horizontal" name="productForm" ng-submit="saveData(product)" novalidate enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="UnitPrice" class="col-md-3 control-label">Select Category</label>
+                <div class="col-md-9">
+                    <select ng-model="ddlCategory" ng-options="item.name for item in Categories" class="form-control" name="ddlCategory">
+                        <option value="">-Select-</option>
+                    </select>
+                    <p ng-show="productForm.ddlCategory.$error.required && (IsSubmit || productForm.CategoryId.$dirty)" class="text-danger">Please Select Category</p>
+                </div>
+            </div>  
+            <div class="form-group">
+                <label for="Name" class="col-md-3 control-label">Product Name</label>
+                <div class="col-md-9">
+                    <input type="text" id="Name" name="Name" ng-required="true" ng-model="product.name" class="form-control" />
+                    <p ng-show="productForm.Name.$error.required && (IsSubmit || productForm.Name.$dirty)" class="text-danger">Please Enter Name</p>
+                </div>
+            </div>   
+            <div class="form-group">
+                <label for="UnitPrice" class="col-md-3 control-label">Unit Price</label>
+                <div class="col-md-9">
+                    <input type="text" id="UnitPrice" name="UnitPrice" ng-required="true" ng-model="product.unitPrice" class="form-control" />
+                    <p ng-show="productForm.UnitPrice.$error.required && (IsSubmit || productForm.UnitPrice.$dirty)" class="text-danger">Please Enter Price</p>
+                </div>
+            </div> 
+               
+            <div class="form-group">
+                <label for="Image" class="col-md-3 control-label">Product Image</label>
+                <div class="col-md-9">
+                    <input type="file" id="image" name="image" accept="image/*" ngf-select ng-model="product.image" ngf-multiple="true" />
+                    <p ng-show="productForm.image.$error.required && (IsSubmit || productForm.image.$dirty)" class="text-danger">Please select Image</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <input type="submit" value="Create" ng-hide="product._id>0" class="btn btn-primary" />
+                    <input type="submit" value="Update" ng-show="product._id>0" class="btn btn-primary" />
+                    <a ui-sref="products" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

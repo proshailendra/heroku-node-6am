@@ -1,0 +1,25 @@
+<h2>{{Title}}</h2>
+<p class="form-group">
+    <input ng-model="search" placeholder="Search Product" class="form-control" />
+</p>
+<table class="table table-bordered">
+    <tr ng-repeat="product in products | orderBy:'name' | filter:search">
+        <td><img ng-src="{{product.imagePath}}" alt="{{product.name}}" style="height:100px;" /></td>
+        <td>
+            <a ui-sref="productdetails({id:product._id})"><b>{{product.name}}</b></a><br />
+        </td>
+        <td>
+            {{product.unitPrice | currency:"Rs."}}
+        </td>
+        <td>
+            <input type="number" ng-init="product.quantity=1" ng-model="product.quantity" style="width:60px" />
+            <button type="button" ng-click="cart.addItem(product._id, product.name, product.unitPrice, product.quantity)" class="btn btn-primary">
+                Add to cart
+            </button><br />
+            <span ng-show="cart.getTotalCount(product._id) > 0" class="text-danger">
+                This item is in the cart <a href="javascript:void(0)" ng-click="cart.addItem(product._id, product.name, product.unitPrice, -10000)"
+                                            ng-disabled="cart.getTotalCount(product._id) < 1">Remove</a>
+            </span>
+        </td>
+    </tr>
+</table>

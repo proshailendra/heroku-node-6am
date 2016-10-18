@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>{{Title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="angular/angular.js"></script>
+    <script src="angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="ng-storage/ngStorage.js"></script>
+    <script src="crypto-js/crypto-js.js"></script>
+    <script src="crypto-js/sha512.js"></script>
+
+    <script src="app.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.controller.js"></script>
+
+    <script src="models/cart.js"></script>
+    <script src="services/auth.service.js"></script>
+    <script src="services/store.service.js"></script>
+        
+    <script src="controllers/store.controller.js"></script>
+    <script src="controllers/account.controller.js"></script>
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="appController">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <a class="navbar-brand" href="/">Shoping Site</a>
+        <ul class="nav navbar-nav">
+            <li>
+                <a ui-sref="store">Home</a>
+            </li>            
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-show="authInfo.isAuth" style="padding-top:15px;">Welcome {{authInfo.fullName}}</li>
+            <li ng-show="authInfo.isAuth"><a href="#" ng-click="logOut()">Logout</a></li>
+
+            <li ng-hide="authInfo.isAuth"><a ui-sref="login">Login</a></li>
+            <li ng-hide="authInfo.isAuth"><a ui-sref="signup">Sign Up</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li>
+                <a ui-sref="cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1" ng-if="cart.getTotalCount()>0">
+                    <i class="fa fa-shopping-cart"></i> <b> {{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice()
+                        | currency : "Rs."}}</b>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
+</body>
+
+</html>

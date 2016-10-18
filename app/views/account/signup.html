@@ -1,0 +1,31 @@
+﻿<form role="form" class="form-horizontal col-md-8" name="userForm" ng-submit="saveData(user)" novalidate>
+    <h2>User Sign Up</h2>
+
+    <div class="form-group">
+        <input type="text" name="fullName" class="form-control" placeholder="Full Name" ng-model="user.fullName" required autofocus>
+        <p ng-show="userForm.fullName.$error.required && (IsSubmit || userForm.fullName.$dirty)" class="text-danger">Please Enter Full Name</p>
+    </div>
+    <div class="form-group">
+        <input type="text" name="userName" class="form-control" placeholder="Username" ng-model="user.userName" required autofocus>
+        <p ng-show="userForm.userName.$error.required && (IsSubmit || userForm.userName.$dirty)" class="text-danger">Please Enter userName</p>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+        <p ng-show="userForm.password.$error.required && (IsSubmit || userForm.password.$dirty)" class="text-danger">Please Enter Password</p>
+    </div>
+    <div class="form-group">
+        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.confirmPassword" required>
+        <p ng-show="userForm.confirmPassword.$error.required && (IsSubmit || userForm.confirmPassword.$dirty)" class="text-danger">Please Enter Confirm Password</p>
+    </div>
+    <div class="form-group">
+        <textarea name="address" class="form-control" placeholder="Address" ng-model="user.address" required></textarea>
+        <p ng-show="userForm.address.$error.required && (IsSubmit || userForm.address.$dirty)" class="text-danger">Please Enter Address</p>
+    </div>
+    <div class="form-group">
+        <input type="text" name="contactNo" class="form-control" placeholder="Contact No" ng-model="user.contactNo" required>
+        <p ng-show="userForm.contactNo.$error.required && (IsSubmit || userForm.contactNo.$dirty)" class="text-danger">Please Enter contactNo</p>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-md btn-info btn-block" type="submit" ng-click="signup(user)">Sign Up</button>
+    </div>
+</form>

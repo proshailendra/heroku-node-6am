@@ -1,0 +1,16 @@
+﻿<form role="form" class="form-horizontal col-md-4">
+    <h2>User Login</h2>
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" ng-model="user.userName" required autofocus>
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-md btn-info btn-block" type="submit" ng-click="login(user)">Login</button>
+    </div>
+    <!--<div data-ng-hide="message == ''">
+        {{message}}
+    </div>-->
+</form>

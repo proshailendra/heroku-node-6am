@@ -1,0 +1,83 @@
+<h2>{{Title}}</h2>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- items -->
+            <table class="table">
+                <!-- header -->
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                <!-- empty cart message -->
+                <tr ng-hide="cart.getTotalCount() > 0">
+                    <td colspan="4">
+                        Your cart is empty.
+                    </td>
+                </tr>
+                <!-- cart items -->
+                <tr ng-repeat="item in cart.items | orderBy:'name'">
+                    <td>{{item.name}}</td>
+                    <td>
+                        <div class="input-group">
+                            <!-- use type=tel instead of  to prevent spinners -->
+                            <input class="form-control" type="text" ng-model="item.quantity" ng-change="cart.saveItems()" style="width:60px" /> &nbsp;
+                            <button class="btn btn-success" type="button" ng-disabled="item.quantity >= 1000" ng-click="cart.addItem(item.productId, item.name, item.unitPrice, +1)">
+                                +
+                            </button> &nbsp;
+                            <button class="btn btn-inverse" type="button" ng-disabled="item.quantity <= 1" ng-click="cart.addItem(item.productId, item.name, item.unitPrice, -1)">
+                                -
+                            </button>
+                        </div>
+                    </td>
+                    <td>{{item.unitPrice * item.quantity | currency:"Rs."}}</td>
+                    <td title="Remove from cart">
+                        <button class="btn btn-danger" type="button" ng-click="cart.addItem(item.productId, item.name, item.unitPrice, -10000000)">
+                            X
+                        </button>
+                    </td>
+                </tr>
+                <!-- footer -->
+                <tr ng-show="cart.getTotalCount() > 0">
+                    <th></th>
+                    <th>Total</th>
+                    <th>{{cart.getTotalPrice() | currency : "Rs."}}</th>
+                    <th></th>
+                </tr>
+                <tr ng-show="cart.getTotalCount() > 0">
+                    <th></th>
+                    <th>Service Tax</th>
+                    <th>{{cart.tax}}%</th>
+                    <th></th>
+                </tr>
+                <tr ng-show="cart.getTotalCount() > 0">
+                    <th></th>
+                    <th> Total</th>
+                    <th>{{cart.grandTotal| currency :"Rs."}}</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+        <!-- buttons -->
+        <div class="col-md-4">
+            <p class="text-info">
+                <a class="btn btn-block btn-success" ui-sref="store">
+                    <i class="fa fa-briefcase"></i> Continue Shopping >>
+                </a>
+                <button class="btn btn-block btn-danger" ng-click="cart.clearItems()" ng-disabled="cart.getTotalCount() < 1">
+                    <i class="fa fa-trash"/> Clear Cart
+                </button>
+            </p>
+            <br/><br/>
+
+            <p>
+                <button class="btn btn-block btn-primary" ng-click="checkout()" ng-disabled="cart.getTotalCount() < 1">
+                    <i class="icon-ok icon-white"/> Check out using PayUmoney
+                </button>
+            </p>
+        </div>
+    </div>
+</div>

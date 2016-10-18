@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-lg-8">
+        <h3>Product List</h3>
+    </div>
+    <div class="col-lg-4 text-right">
+        <a ui-sref="createProduct" class="btn btn-success">Create</a>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>SNo.</th>
+        <th>Name</th>
+        <th>UnitPrice</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    <tr ng-repeat="item in Products track by $index">
+        <td>{{$index + 1}}</td>
+        <td>{{:: item.name}}</td>
+        <td>{{:: item.unitPrice}}</td>
+        <td><img ng-src="{{item.imagePath}}" style="height: 50px" /></td>
+        <td>
+            <a ui-sref="editProduct({id:item._id})">Edit</a> |
+            <a href="#" ng-click="Delete(item._id)">Delete</a>
+        </td>
+    </tr>
+</table>

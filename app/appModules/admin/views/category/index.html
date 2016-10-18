@@ -1,0 +1,23 @@
+<h2>{{Title}}</h2>
+<a ui-sref="createCategory" class="btn btn-primary">Create</a>
+<table class="table table-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>SNo.</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in categories">
+            <td>{{$index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                <a ui-sref="editCategory({id:item._id})" class="btn btn-success">Edit</a>
+                <a ng-click="deleteCategory(item._id)" class="btn btn-warning">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

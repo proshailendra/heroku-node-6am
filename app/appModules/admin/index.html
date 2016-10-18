@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp">
+
+<head>
+    <title>{{Title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/admin">
+    <!--libs-->
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="../../angular/angular.js"></script>
+    <script src="../../angular-ui-router/release/angular-ui-router.js"></script>    
+    <script src="../../ng-file-upload/dist/ng-file-upload.js"></script>
+    <script src="../../ng-file-upload/dist/ng-file-upload-shim.js"></script>
+
+    <!--app settings-->
+    <script src="appModules/admin/app.admin.js"></script>
+    <script src="appModules/admin/app.admin.config.js"></script>
+    <!--services-->
+    <script src="appModules/admin/services/category.service.js"></script>
+    <script src="appModules/admin/services/product.service.js"></script>
+    <!--controllers-->
+    <script src="appModules/admin/controllers/dashboard.controller.js"></script>
+    <script src="appModules/admin/controllers/category.controller.js"></script>
+    <script src="appModules/admin/controllers/product.controller.js"></script>
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <a class="navbar-brand" href="/">Shoping Site</a>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a ui-sref="category">Category</a>
+            </li>
+            <li>
+                <a ui-sref="product">Product</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
+</body>
+
+</html>
