@@ -5,7 +5,7 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 });
  
-var port = process.env.port || 1301;
+var port = process.env.PORT || 1301;
 app.listen(port, function() {
     console.log("Server is running at http://localhost:" + port);
 });
