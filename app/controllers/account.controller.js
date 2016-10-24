@@ -20,7 +20,7 @@
                 if (data.success == true) {
                     authService.setAuthInfo(data.authObj);
                     if (data.authObj.roles.indexOf("Admin") >= 0) {
-                        $state.go("admin");
+                        window.location.href = "/admin";
                     } else {
                         if ($scope.goState !== undefined && $scope.goState !== "") {
                             $state.go($scope.goState);
